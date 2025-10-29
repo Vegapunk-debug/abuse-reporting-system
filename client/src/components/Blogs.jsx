@@ -1,33 +1,42 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const blogs = [
   {
+    id: 1,
     date: 'July 1, 2025',
     title: 'How to Recognize Signs of Child Abuse',
     author: 'Dr. Anjali Verma',
     avatar: 'https://randomuser.me/api/portraits/women/44.jpg',
     image: 'https://images.pexels.com/photos/7003612/pexels-photo-7003612.jpeg',
+    content: 'Child abuse can manifest in various forms, including physical, emotional, and neglect. Recognizing the signs early can save lives. Look for unexplained injuries, changes in behavior, or withdrawal from social activities. If you suspect abuse, report it immediately to authorities.',
   },
   {
+    id: 2,
     date: 'June 24, 2025',
     title: ' What Happens After You File an Anonymous Report?',
     author: 'Inspector Rajeev Mehra',
     avatar: 'https://randomuser.me/api/portraits/men/32.jpg',
     image: 'https://images.pexels.com/photos/3862379/pexels-photo-3862379.jpeg',
+    content: 'Filing an anonymous report ensures your safety while contributing to community safety. After submission, the report is reviewed by law enforcement, who may investigate further. You can follow up anonymously if needed, but remember that anonymity protects you from retaliation.',
   },
   {
+    id: 3,
     date: 'June 10, 2025',
     title: 'Why Reporting Drug Activity Matters',
     author: 'Ritu Shah, Community Activist',
     avatar: 'https://randomuser.me/api/portraits/men/64.jpg',
     image: 'https://images.pexels.com/photos/5428834/pexels-photo-5428834.jpeg',
+    content: 'Drug activity not only harms individuals but also destabilizes communities. Reporting suspicious behavior helps law enforcement dismantle networks and provide support to those affected. Your report can lead to interventions that save lives and improve public safety.',
   },
   {
+    id: 4,
     date: 'May 20, 2025',
     title: 'Your Legal Rights When Reporting a Crime',
     author: 'Advocate Sameer Kulkarni',
     avatar: 'https://images.pexels.com/photos/5380641/pexels-photo-5380641.jpeg',
     image: 'https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg',
+    content: 'Reporting a crime is a civic duty, and you have legal protections. Whistleblower laws shield you from retaliation, and in many jurisdictions, anonymous reporting is allowed. Understand your rights to ensure you feel secure when coming forward.',
   },
 ];
 
@@ -39,9 +48,10 @@ function BlogSection() {
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {blogs.map((blog, index) => (
-          <div
+          <Link
             key={index}
-            className="flex flex-col md:flex-row items-start bg-white border border-gray-100 rounded-2xl shadow-sm hover:shadow-md transition"
+            to={`/blog/${blog.id}`}
+            className="flex flex-col md:flex-row items-start bg-white border border-gray-100 rounded-2xl shadow-sm hover:shadow-md transition cursor-pointer"
           >
             <img
               src={blog.image}
@@ -64,11 +74,11 @@ function BlogSection() {
                 <p className="text-sm font-medium text-gray-700">{blog.author}</p>
               </div>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </section>
-  );
+  )
 }
 
 export default BlogSection;

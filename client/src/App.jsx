@@ -13,48 +13,52 @@ import AdminHome from './adminpages/AdminHome';
 import AdminRoot from './adminpages/AdminRoot';
 import About from './pages/About';
 import BlogSection from './components/Blogs';
+import BlogDetail from './components/BlogDetail';
 import HelpLine from './pages/HelpLine';
 import { Navigate } from 'react-router-dom';
 
 function App() {
 
-  const role=localStorage.getItem('data');
+  const role = localStorage.getItem('data');
   const router = createBrowserRouter([
     {
       path: '/',
-        element: <Root/>,
-        children: [
-          {
-            path: '/', element: role ? <HomePage/> : <Navigate to="/Login"/>
-          },
-          {
-            path: '/Products', element: <ProductPage/>
-          },
-          {
-            path: '/Report', element: <ReportingForm/>
-            },
-          {
-            path: '/HowItWorks', element: <HowItWorks />
-          },
-          {
-            path: '/About', element: <About />
-          },
-          {
-            path: '/Blogs', element: <BlogSection />
-          },
-          {
-            path: '/HelpLine', element: <HelpLine />
-          }
-        ]
+      element: <Root />,
+      children: [
+        {
+          path: '/', element: role ? <HomePage /> : <Navigate to="/Login" />
+        },
+        {
+          path: '/Products', element: <ProductPage />
+        },
+        {
+          path: '/Report', element: <ReportingForm />
+        },
+        {
+          path: '/HowItWorks', element: <HowItWorks />
+        },
+        {
+          path: '/About', element: <About />
+        },
+        {
+          path: '/Blogs', element: <BlogSection />
+        },
+        {
+          path: '/blog/:id', element: <BlogDetail />
+        },
+        {
+          path: '/HelpLine', element: <HelpLine />
+        }
+      ]
     },
     {
-      path: '/Register', element: <Register/>
+      path: '/Register', element: <Register />
     },
     {
-      path: '/Login', element: role == 'user' ? <Navigate to ="/"/> :role == 'admin' ? <Navigate to ="/AdminHome"/> : <LoginPage/>
+      path: '/Login', element: role == 'user' ? <Navigate to="/" /> : role == 'admin' ? <Navigate to="/AdminHome" /> : <LoginPage />
     },
     {
-      path: '/AdminHome/*', element: <AdminRoot />, 
+      path: '/AdminHome/*', element: <AdminRoot />,
       // children: [
       //   {
       //     path: '/'
